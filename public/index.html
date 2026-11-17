@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librería lucianoavilalopez | Gestión de Catálogo</title>    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">📚 Librería Luciano Ávila López</span>
+            <span class="navbar-text text-light small">Sistema de Control</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="alerta" class="alert d-none" role="alert"></div>
+
+        <div class="row g-4">
+            <!-- Formulario de Registro -->
+            <div class="col-12 col-lg-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white fw-bold">Registrar Nuevo Libro</div>
+                    <div class="card-body">
+                        <form id="formLibro">
+                            <div class="mb-3">
+                                <label class="form-label">Título del Libro *</label>
+                                <input type="text" id="titulo" class="form-control" required maxlength="150" placeholder="Ej. El laberinto de la soledad">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Autor *</label>
+                                <input type="text" id="autor" class="form-control" required maxlength="100" placeholder="Ej. Octavio Paz">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Código ISBN *</label>
+                                <input type="text" id="isbn" class="form-control" required maxlength="20" placeholder="Ej. 978-6071600000">
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Ejemplares *</label>
+                                    <input type="number" id="ejemplares_disponibles" class="form-control" required min="0" value="1">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label class="form-label">Precio ($ MXN) *</label>
+                                    <input type="number" id="precio_venta" class="form-control" required min="0.01" step="0.01" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Fecha de Publicación *</label>
+                                <input type="date" id="fecha_publicacion" class="form-control" required>
+                            </div>
+                            <div class="mb-3 form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="disponible_venta" checked>
+                                <label class="form-check-label" for="disponible_venta">Disponible para venta al público</label>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100">Agregar al Catálogo</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catálogo de Libros -->
+            <div class="col-12 col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Inventario de Libros</span>
+                        <button onclick="cargarLibros()" class="btn btn-sm btn-outline-dark">Refrescar</button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Título y Autor</th>
+                                        <th>ISBN</th>
+                                        <th>Stock</th>
+                                        <th>Precio</th>
+                                        <th>Publicación</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaLibros">
+                                    <!-- Registros cargados desde PostgreSQL -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center text-muted py-4 mt-5 small">
+        &copy; 2026 Librería lucianoavilalopez - Todos los derechos reservados.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

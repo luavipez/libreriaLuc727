@@ -1,0 +1,15 @@
+{
+  "name": "libreria-lucianoavilalopez",
+  "version": "1.0.0",
+  "description": "Sistema de gestion para Libreria lucianoavilalopez - Estandar EC0727",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.23.1"
+  }
+}
